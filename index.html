@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aarhus Vindmøllelaug</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+<h1>Aarhus Vindmøllelaug</h1>
+<div class="header">
+  <div>
+    <button type="button" class="button" id="addWindmillButton">Add windmill</button>
+  <button type="button" class="button" id="showAllWindmillsButton">Show all windmills</button>
+</div>
+  <form id="snSearchForm">
+    <input type="search" id="idField" class="inputField" placeholder="Search id number" required>
+    <button type="submit" class="button">Search</button>
+  </form>
+</div>
+
+<!--Panel starts here-->
+<aside class="searchPanel" id="searchPanel">
+  <span class="panelText" id="panelText">A D V A N C E D&nbsp;&nbsp;S E A R C H</span>
+  <form id="searchForm" class="searchForm">
+    <div class="closeCross" id="closeCross">X</div>
+    <label for="location" class="searchFormLabel">Location</label>
+    <input type="text" name="" id="location" class="searchFormField">
+
+    <label for="brand" class="searchFormLabel">Brand</label>
+    <input type="text" name="" id="brand" class="searchFormField">
+
+    <label for="setup" class="searchFormLabel">Setup year</label>
+    <input type="text" name="" id="setup" class="searchFormField">
+
+    <label for="lastyear" class="searchFormLabel">Last year MW</label>
+    <input type="text" name="" id="lastyear" class="searchFormField">
+    <br><br>
+
+    <div class="searchFormPanel">
+      <button type="reset" class="searchFormButoon">Reset</button>
+      <button type="submit" class="searchFormButton">Apply</button>
+    </div>
+  </form>
+</aside>
+
+
+<!--Panel end here-->
+
+<!-- Add guitar dialog start-->
+<dialog id="windmillDialog">
+  <form method="dialog" id="windmillDialogForm">
+    <fieldset>
+      <legend>Add new windmill</legend>
+      <label for="idfield">S/N: </label><input type="text" class="inputField dialogField" id="idfield" placeholder="Type in id number" required>
+
+      <label for="locationfield">Location: </label><input type="text" class="inputField dialogField" id="locationfield" placeholder="Type in location" required>
+
+      <label for="brandfield">Brand: </label><input type="text" class="inputField dialogField" id="brandfield" placeholder="Type in brand name" required>
+
+      <label for="setupfield">Setup year: </label><input type="text" class="inputField dialogField" id="setupfield" placeholder="Type in setup year" required>
+
+      <label for="lastyearfield">Last year MW: </label><input type="text" class="inputField dialogField" id="lastyearfield" placeholder="Type in produced MW last year" required>
+      <br><br>
+      <div class="dialogBtnsPanel">
+        <button type="button" id="cancelButton" class="button">Cancel</button>
+        <button type="submit" id="saveButton" class="button">Save</button>
+      </div>
+    </fieldset>
+  </form>
+</dialog>
+
+<!-- Add guitar dialog end-->
+
+<!--Delete confirmation dialog here start-->
+<dialog id="confirmDialog">
+  <form method="dialog" id="confirmDialogForm">
+    <fieldset>
+      <legend>Delete windmill?</legend>
+      Do you really want to delete this windmill?
+      <br><br>
+      <div class="dialogBtnsPanel">
+        <button type="submit" class="button">Yes</button>
+        <button type="button" class="button" id="cancelConfirmBtn">No</button>
+      </div>
+    </fieldset>
+  </form>
+</dialog>
+
+<!--Delete confirmation dialog here end-->
+
+<!-- Hidden field -->
+<form>
+  <input type="hidden" id="hiddenSnField">
+</form>
+
+<div id="searchResult"></div>
+
+
+<div id="snackbar">Some mesagge will arrive</div>
+
+
+<script type="module">
+  import Model from "./models/model.js"
+  import Controller from "./controllers/controller.js"
+  import View from "./views/view.js"
+
+  window.onload = function () {
+    const model = new Model();
+    const controller = new Controller();
+    const view = new View(controller);
+    controller.initialize(model, view);
+  }
+</script>
+
+</body>
+
+</html>
