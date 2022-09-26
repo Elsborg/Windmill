@@ -26,7 +26,7 @@ export default class Inventory {
         const {idNumber, location, brand, setupYear, mwLastYear} = idealWindmill;
 
         for (const windmill of this.windmills) {
-            if (windmill.location === location && windmill.brand === brand && windmill.setupyear === setupYear && windmill.mwlastyear === mwLastYear)
+            if (windmill.location === location && windmill.brand === brand && windmill.setupYear == setupYear && windmill.mwLastYear == mwLastYear)
             {
                 return windmill;
             }
